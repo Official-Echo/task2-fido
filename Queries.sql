@@ -23,3 +23,20 @@ WHERE     id IN (
                     WHERE     name = 'Програмування'
                     )
           );
+
+-- Nested query using EXISTS
+SELECT    s.id,
+          s.full_name,
+          s.email
+FROM      student AS s
+WHERE     EXISTS (
+          SELECT    *
+          FROM      enrollment AS e
+          WHERE     e.student_id = s.id
+          AND       e.group_number = 5
+          AND       e.discipline_id IN (
+                    SELECT    d.id
+                    FROM      discipline AS d
+                    WHERE     d.name = 'Програмування'
+                    )
+          );
