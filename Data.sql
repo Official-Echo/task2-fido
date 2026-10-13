@@ -120,3 +120,5 @@ FROM      pairs
 WHERE     roll < CASE WHEN is_prog THEN 0.5 ELSE 0.15 END;
 
 COMMIT;
+
+ANALYZE student, discipline, enrollment;
